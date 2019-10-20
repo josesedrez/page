@@ -19,6 +19,8 @@ class CreateAudioVisualsTable extends Migration
             $table->float('graphic_grade');
             $table->float('audio_grade');
             $table->timestamps();
+
+            $table->foreign('evaluation_id')->references('id')->on('evaluations')->onDelete('cascade');
         });
     }
 

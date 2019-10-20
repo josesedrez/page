@@ -27,7 +27,7 @@
                         <span><a href="{{ route('games.show',$evaluation->game->id) }}">{{ $evaluation->game->title }}</a></span>
                     </td>
                     <td>
-                        <a href="{{ route('evaluations.edit',$evaluation->id,$evaluation->game->id) }}">Editar</a>
+                        <a href="{{ route('evaluations.edit',[$evaluation->id,$evaluation->game->id]) }}">Editar</a>
                         <form action="{{ route('evaluations.destroy',$evaluation->id) }}" method="post">
                             @method('DELETE')
                             @csrf

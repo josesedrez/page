@@ -21,6 +21,8 @@ class CreateGameMechanicsTable extends Migration
             $table->float('rule_grade');
             $table->float('control_grade');
             $table->timestamps();
+
+            $table->foreign('evaluation_id')->references('id')->on('evaluations')->onDelete('cascade');
         });
     }
 

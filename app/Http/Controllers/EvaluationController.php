@@ -90,9 +90,9 @@ class EvaluationController extends Controller
      * @param  \App\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evaluation $evaluation)
+    public function edit(Evaluation $evaluation, $gameId)
     {
-        return view('evaluations.edit', compact('evaluation'));
+        return view('evaluations.edit', compact('evaluation', 'gameId'));
     }
 
     /**
@@ -105,17 +105,31 @@ class EvaluationController extends Controller
     public function update(EvaluationValidation $request, Evaluation $evaluation)
     {
         $evaluation->update([
+            'user_id' => Auth::id(),
+            'game_id' => $request->gameId,
             'title' => $request->title,
-            'description' => $request->description,
-            'objective' => $request->objective,
-            'challenge' => $request->challenge,
-            'rule' => $request->rule,
-            'control' => $request->control,
-            'scenario' => $request->scenario,
-            'characterBuilding' => $request->characterBuilding,
-            'plot' => $request->plot,
-            'graphic' => $request->graphic,
-            'audio' => $request->audio,
+            'description' => $request->description
+        ]);
+
+        $evaluation->gameMechanic->update([
+            'evaluation_id' => $evaluation->id,
+            'objective_grade' => $request->objective,
+            'challenge_grade' => $request->challenge,
+            'rule_grade' => $request->rule,
+            'control_grade' => $request->control,
+        ]);
+
+        $evaluation->story->update([
+            'evaluation_id' => $evaluation->id,
+            'scenario_grade' => $request->scenario,
+            'character_building_grade' => $request->characterBuilding,
+            'plot_grade' => $request->plot,
+        ]);
+
+        $evaluation->audioVisual->update([
+            'evaluation_id' => $evaluation->id,
+            'graphic_grade' => $request->graphic,
+            'audio_grade' => $request->audio,
         ]);
 
         return redirect(route('evaluations.index'));

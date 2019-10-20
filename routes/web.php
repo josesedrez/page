@@ -27,4 +27,4 @@ Route::resource('/evaluations', 'EvaluationController');
 
 Route::get('/evaluations/create/{game}', 'EvaluationController@create')->name('evaluations.create');
 
-Route::get('/evaluations/edit/{evaluation}/{game}', 'EvaluationController@create');
+Route::get('/evaluations/{evaluation}/edit/{game}', 'EvaluationController@edit')->name('evaluations.edit');

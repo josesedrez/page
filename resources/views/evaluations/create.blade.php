@@ -8,6 +8,8 @@
 
         <input type="hidden" name="gameId" value="{{ $gameId }}">
 
+        <h4>Corpo da avaliação</h4>
+        
         <div class="form-group row">
                 <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Título') }}</label>
     
@@ -35,6 +37,8 @@
                     @endif
                 </div>
             </div>
+
+            <h4>Mecânica de jogo</h4>
 
             <div class="form-group row">
                 <label for="objective" class="col-md-4 col-form-label text-md-right">{{ __('Objetivos') }}</label>
@@ -84,6 +88,8 @@
                 </div>
             </div>
 
+            <h4>História</h4>
+
             <div class="form-group row">
                 <label for="scenario" class="col-md-4 col-form-label text-md-right">{{ __('Cenários') }}</label>
     
@@ -119,6 +125,8 @@
                     <input type="radio" name="plot" value="5" {{ old('plot') == 5 ? 'checked' : '' }} required autofocus>
                 </div>
             </div>
+
+            <h4>Audio visual</h4>
 
             <div class="form-group row">
                 <label for="graphic" class="col-md-4 col-form-label text-md-right">{{ __('Gráfico') }}</label>
