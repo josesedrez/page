@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/categories', 'CategoryController');
+
+Route::resource('/games', 'GameController');
+
+Route::resource('/evaluations', 'EvaluationController');
+
+Route::get('/evaluations/create/{game}', 'EvaluationController@create')->name('evaluations.create');
+
+Route::get('/evaluations/edit/{evaluation}/{game}', 'EvaluationController@create');

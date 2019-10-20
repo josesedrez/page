@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Requests\CategoryValidation;
+use App\AudioVisual;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class AudioVisualController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-
-        return view('categories.index',compact('categories'));
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        //
     }
 
     /**
@@ -36,22 +33,18 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryValidation $request)
+    public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name
-        ]);
-
-        return redirect(route('categories.index'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\AudioVisual  $audioVisual
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(AudioVisual $audioVisual)
     {
         //
     }
@@ -59,39 +52,34 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\AudioVisual  $audioVisual
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(AudioVisual $audioVisual)
     {
-        return view('categories.edit', compact('category'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\AudioVisual  $audioVisual
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryValidation $request, Category $category)
+    public function update(Request $request, AudioVisual $audioVisual)
     {
-        $category->update([
-            'name' => $request->name
-        ]);
-
-        return redirect(route('categories.index'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\AudioVisual  $audioVisual
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(AudioVisual $audioVisual)
     {
-        $category->delete();
-        return redirect()->back();
+        //
     }
 }
