@@ -10,7 +10,9 @@ class Game extends Model
     protected $fillable = [
         'title',
         'description',
-        'grade'
+        'grade',
+        'cover',
+        'parental_rating'
     ];
 
     public function evaluations()

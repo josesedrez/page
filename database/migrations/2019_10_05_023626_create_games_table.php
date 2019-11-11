@@ -18,6 +18,8 @@ class CreateGamesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->float('grade')->default(0);
+            $table->string('cover')->default('default_cover.png');
+            $table->integer('parental_rating')->default(0);
             $table->timestamps();
         });
     }

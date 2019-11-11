@@ -26,7 +26,7 @@
                     {{ __('Criar categoria') }}
                 </button>
                 
-                <a href="{{ route('categories.index') }}">Voltar</a>
+                <a href="{{ url()->previous() }}">Voltar</a>
             </div>
         </div>
     </form>

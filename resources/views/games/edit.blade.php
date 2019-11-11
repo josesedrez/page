@@ -22,6 +22,29 @@
         </div>
 
         <div class="form-group row">
+            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Imagem de capa') }}</label>
+
+            <div class="col-md-6">
+                <input type="file" name="cover">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Classificação indicativa') }}</label>
+
+            <div class="col-md-6">
+                <select name="parentalRating">
+                    <option value="0" {{ $game->parental_rating == 0 && !$errors->any() || old('parentalRating') == 0 ? 'selected' : '' }}>L</option>
+                    <option value="10" {{ $game->parental_rating == 10 && !$errors->any() || old('parentalRating') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="12" {{ $game->parental_rating == 12 && !$errors->any() || old('parentalRating') == 12 ? 'selected' : '' }}>12</option>
+                    <option value="14" {{ $game->parental_rating == 14 && !$errors->any() || old('parentalRating') == 14 ? 'selected' : '' }}>14</option>
+                    <option value="16" {{ $game->parental_rating == 16 && !$errors->any() || old('parentalRating') == 16 ? 'selected' : '' }}>16</option>
+                    <option value="18" {{ $game->parental_rating == 18 && !$errors->any() || old('parentalRating') == 18 ? 'selected' : '' }}>18</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
 
             <div class="col-md-6">
@@ -41,7 +64,7 @@
                         {{ __('Editar categoria') }}
                     </button>
                     
-                    <a href="{{ route('games.index') }}">Voltar</a>
+                    <a href="{{ url()->previous() }}">Voltar</a>
                 </div>
             </div>
     </form>

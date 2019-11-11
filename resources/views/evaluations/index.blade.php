@@ -5,7 +5,7 @@
 @section('card-content')
     <ul>
         <li>
-            <a href="/home">Voltar</a>
+            <a href="{{ url()->previous() }}">Voltar</a>
         </li>
     </ul>
 

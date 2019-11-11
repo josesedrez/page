@@ -158,7 +158,7 @@
                     {{ __('Avaliar jogo') }}
                 </button>
                 
-                <a href="{{ route('games.show', $gameId) }}">Voltar</a>
+                <a href="{{ url()->previous() }}">Voltar</a>
             </div>
         </div>
     </form>

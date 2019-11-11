@@ -5,7 +5,7 @@
 @section('card-content')
 
     <ul>
-        <li><a href="{{ route('evaluations.index') }}">Voltar</a></li>
+        <li><a href="{{ url()->previous() }}">Voltar</a></li>
     </ul>
     <div>
         <h3>{{ $evaluation->title }}</h3>

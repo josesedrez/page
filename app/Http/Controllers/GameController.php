@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Game;
 use App\Http\Requests\GameValidation;
 use Illuminate\Http\Request;
@@ -38,10 +39,13 @@ class GameController extends Controller
      */
     public function store(GameValidation $request)
     {
+        $coverName = $this->uploadFileAndGetName($request->file('cover'));
 
         Game::create([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'cover' => $coverName,
+            'parental_rating' => $request->parentalRating
         ]);
 
         return redirect(route('games.index'));
@@ -67,6 +71,23 @@ class GameController extends Controller
     public function edit(Game $game)
     {
         return view('games.edit', compact('game'));
+    }
+
+    public function editCategories(Game $game)
+    {
+        $categories = Category::all();
+        $categoriesId = $game->categories->map(function ($item) {
+            return $item->id;
+        });
+        return view('games.editCategories', compact('game','categories', 'categoriesId'));
+    }
+
+    public function updateCategories(Request $request, Game $game)
+    {
+        $game->categories()->detach();
+        $game->categories()->attach($request->categories);
+
+        return redirect(route('games.index'));
     }
 
     /**

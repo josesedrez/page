@@ -10,4 +10,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function uploadFileAndGetName($image)
+    {
+        $name = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/covers');
+        $image->move($destinationPath, $name);
+
+        return $name;
+    }
 }

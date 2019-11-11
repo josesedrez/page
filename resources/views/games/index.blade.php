@@ -8,7 +8,7 @@
             <a href="{{ route('games.create') }}">Criar novo jogo</a>
         </li>
         <li>
-            <a href="/home">Voltar</a>
+            <a href="{{ url()->previous() }}">Voltar</a>
         </li>
     </ul>
 
@@ -31,6 +31,7 @@
                     </td>
                     <td>
                         <a href="{{ route('games.edit',$game->id) }}">Editar</a>
+                        <a href="{{ route('games.editCategories',$game->id) }}">Categorias</a>
                         <form action="{{ route('games.destroy',$game->id) }}" method="post">
                             @method('DELETE')
                             @csrf
