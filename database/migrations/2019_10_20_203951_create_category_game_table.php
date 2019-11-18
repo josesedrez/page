@@ -17,6 +17,7 @@ class CreateCategoryGameTable extends Migration
             $table->primary(['category_id','game_id']);
             $table->integer('category_id')->unsigned();
             $table->integer('game_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

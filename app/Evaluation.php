@@ -8,14 +8,19 @@ use App\Game;
 use App\GameMechanic;
 use App\Story;
 use App\AudioVisual;
+use App\Comment;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Evaluation extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'user_id',
         'game_id',
         'title',
         'description',
+        'grade',
         'like',
         'dislike'
     ];
@@ -43,5 +48,10 @@ class Evaluation extends Model
     public function audioVisual()
     {
         return $this->hasOne(AudioVisual::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

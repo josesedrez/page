@@ -5,7 +5,7 @@
 @section('card-content')
     <ul>
         <li>
-            <a href="{{ url()->previous() }}">Voltar</a>
+            <a href="{{ route('admin') }}">Voltar</a>
         </li>
     </ul>
 
@@ -40,6 +40,6 @@
     </table>
 
     <ul>
-        
+
     </ul>
 @endsection

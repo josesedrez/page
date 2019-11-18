@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class EvaluationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show','list']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +27,15 @@ class EvaluationController extends Controller
         $evaluations = Evaluation::all();
 
         return view('evaluations.index', compact('evaluations'));
+    }
+
+    public function list()
+    {
+        $evaluations = Evaluation::all()->sortByDesc('updated_at');
+
+        $allEvaluations = $evaluations->chunk(5);
+
+        return view('evaluations.list', compact('allEvaluations'));
     }
 
     /**
@@ -42,11 +56,18 @@ class EvaluationController extends Controller
      */
     public function store(EvaluationValidation $request)
     {
+        $total = $request->objective + $request->challenge + $request->rule
+        + $request->control + $request->scenario + $request->characterBuilding
+        + $request->plot + $request->graphic + $request->audio;
+
+        $grade = $total / 9;
+
         $evaluation = Evaluation::create([
             'user_id' => Auth::id(),
             'game_id' => $request->gameId,
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'grade' => $grade
         ]);
 
         GameMechanic::create([
@@ -70,7 +91,7 @@ class EvaluationController extends Controller
             'audio_grade' => $request->audio,
         ]);
 
-        return redirect(route('games.index'));
+        return redirect(route('evaluations.show',$evaluation->id));
     }
 
     /**
@@ -104,11 +125,18 @@ class EvaluationController extends Controller
      */
     public function update(EvaluationValidation $request, Evaluation $evaluation)
     {
+        $total = $request->objective + $request->challenge + $request->rule
+        + $request->control + $request->scenario + $request->characterBuilding
+        + $request->plot + $request->graphic + $request->audio;
+
+        $grade = $total / 9;
+
         $evaluation->update([
             'user_id' => Auth::id(),
             'game_id' => $request->gameId,
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'grade' => $grade
         ]);
 
         $evaluation->gameMechanic->update([
@@ -132,7 +160,7 @@ class EvaluationController extends Controller
             'audio_grade' => $request->audio,
         ]);
 
-        return redirect(route('evaluations.index'));
+        return redirect(route('evaluations.show', $evaluation->id));
     }
 
     /**
@@ -144,7 +172,7 @@ class EvaluationController extends Controller
     public function destroy(Evaluation $evaluation)
     {
         $evaluation->delete();
-        
-        return redirect()->back();
+
+        return redirect(route('games.show', $evaluation->game->id));
     }
 }

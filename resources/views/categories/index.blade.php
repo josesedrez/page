@@ -8,7 +8,7 @@
             <a href="{{ route('categories.create') }}">Criar nova categoria</a>
         </li>
         <li>
-            <a href="{{ url()->previous() }}">Voltar</a>
+            <a href="{{ route('admin') }}">Voltar</a>
         </li>
     </ul>
 
@@ -39,6 +39,6 @@
     </table>
 
     <ul>
-        
+
     </ul>
 @endsection

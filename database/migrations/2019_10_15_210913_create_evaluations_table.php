@@ -18,13 +18,15 @@ class CreateEvaluationsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('game_id')->unsigned();
             $table->string('title');
-            $table->string('description');
-            // $table->integer('game_mechanic_id')->unsigned();
-            // $table->integer('story_id')->unsigned();
-            // $table->integer('audio_visual_id')->unsigned();
+            $table->text('description');
+            $table->integer('grade')->default(0);
             $table->integer('like')->default(0);
             $table->integer('dislike')->default(0);
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
         });
     }
 

@@ -1,17 +1,27 @@
-@extends('layouts.card-folder')
+@extends('layouts.app')
 
-@section('card-title','Dashboard')
+@push('style')
+    <style>
+        .container {
+            /* border: 1px solid black; */
+        }
+    </style>
+@endpush
 
-@section('card-content')
-    <ul>
-        <li>
-            <a href="{{ route('games.index') }}">Jogos</a>
-        </li>
-        <li>
-            <a href="{{ route('categories.index') }}">Categorias</a>
-        </li>
-        <li>
-            <a href="{{ route('evaluations.index') }}">Avaliações</a>
-        </li>
-    </ul>
+@section('menu')
+    @include('_components.menu')
+@endsection
+
+@section('content')
+<div class="container">
+
+
+    <h4>Ultimas Avaliações</h4>
+    @include('_includes.evaluations.card-list',['evaluations' => $evaluations->take(5)])
+
+    <h4>Jogos em Destaque</h4>
+    @include('_includes.games.card-list',['games' => $games->take(5)])
+</div>
+
+
 @endsection

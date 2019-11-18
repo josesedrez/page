@@ -20,6 +20,7 @@ class CreateGameMechanicsTable extends Migration
             $table->float('challenge_grade');
             $table->float('rule_grade');
             $table->float('control_grade');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('evaluation_id')->references('id')->on('evaluations')->onDelete('cascade');

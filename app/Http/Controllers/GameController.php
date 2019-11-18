@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show','list']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +25,15 @@ class GameController extends Controller
         $games = Game::all();
 
         return view('games.index', compact('games'));
+    }
+
+    public function list()
+    {
+        $games = Game::all()->sortByDesc('updated_at');
+
+        $allGames = $games->chunk(5);
+
+        return view('games.list', compact('allGames'));
     }
 
     /**

@@ -19,6 +19,7 @@ class CreateStoriesTable extends Migration
             $table->float('scenario_grade');
             $table->float('character_building_grade');
             $table->float('plot_grade');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('evaluation_id')->references('id')->on('evaluations')->onDelete('cascade');

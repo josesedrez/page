@@ -11,13 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Evaluation;
+use App\Game;
+
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::get('/games/list', 'GameController@list')->name('games.list');
+
+Route::get('/evaluations/list', 'EvaluationController@list')->name('evaluations.list');
+
+Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
 
 Route::resource('/categories', 'CategoryController');
 
@@ -29,6 +36,8 @@ Route::get('/evaluations/create/{game}', 'EvaluationController@create')->name('e
 
 Route::get('/evaluations/{evaluation}/edit/{game}', 'EvaluationController@edit')->name('evaluations.edit');
 
-Route::get('/games/categories/{game}', 'GameController@editCategories')->name('games.editCategories');
+Route::get('/games/categories/{game}', 'GameController@editCategories')->middleware('auth')->name('games.editCategories');
 
 Route::put('/games/categories/{game}', 'GameController@updateCategories')->name('games.updateCategories');
+
+

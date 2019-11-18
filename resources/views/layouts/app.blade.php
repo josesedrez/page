@@ -19,13 +19,53 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .navbar {
+            background-color: #5A8FAD;
+        }
+
+        footer {
+            background-color: lightgray;
+            bottom:0;
+        }
+
+        main {
+            min-height: 500px;
+        }
+
+        .card-header {
+            background-color: #5A8FAD;
+            color: white;
+        }
+
+        a {
+            color: #636b6f;
+        }
+
+        a.btn-primary {
+            width: 100px;
+            margin: 2px;
+            background-color: #5A8FAD;
+        }
+
+        button.btn-primary {
+            width: 100px;
+            margin: 2px;
+            background-color: #5A8FAD;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    </style>
+    @stack('style')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Page') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -54,6 +94,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Perfil</a>
+                                    @if (Auth::user()->is_admin)
+                                        <a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -70,10 +114,15 @@
                 </div>
             </div>
         </nav>
-
+        @yield('menu')
         <main class="py-4">
+
             @yield('content')
         </main>
+
+        @include('_components.footer')
+
+
     </div>
 </body>
 </html>

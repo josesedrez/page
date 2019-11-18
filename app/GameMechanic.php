@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Evaluation;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GameMechanic extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'objective_grade',
         'challenge_grade',

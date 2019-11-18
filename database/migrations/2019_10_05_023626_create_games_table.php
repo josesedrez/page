@@ -16,10 +16,11 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->float('grade')->default(0);
             $table->string('cover')->default('default_cover.png');
             $table->integer('parental_rating')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

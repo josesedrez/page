@@ -18,6 +18,7 @@ class CreateAudioVisualsTable extends Migration
             $table->integer('evaluation_id')->unsigned();
             $table->float('graphic_grade');
             $table->float('audio_grade');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('evaluation_id')->references('id')->on('evaluations')->onDelete('cascade');

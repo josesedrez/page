@@ -25,7 +25,7 @@ class GameValidation extends FormRequest
     {
         return [
             'title' => 'required|min:3',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'parentalRating' => 'required',
             'description' => 'required|min:3',
         ];
     }
