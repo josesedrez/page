@@ -7,6 +7,7 @@ use App\Evaluation;
 use App\GameMechanic;
 use App\Http\Requests\EvaluationValidation;
 use App\Story;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,9 +30,12 @@ class EvaluationController extends Controller
         return view('evaluations.index', compact('evaluations'));
     }
 
-    public function list()
+    public function list(User $user = null)
     {
         $evaluations = Evaluation::all()->sortByDesc('updated_at');
+        if ($user) {
+            $evaluations = Evaluation::all()->where('user_id',$user->id)->sortByDesc('updated_at');
+        }
 
         $allEvaluations = $evaluations->chunk(5);
 

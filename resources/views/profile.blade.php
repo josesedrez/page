@@ -5,10 +5,10 @@
 @section('card-content')
     <ul>
         <li>
-            <a href="{{ route('categories.index') }}">Menu</a>
+            <a class="btn btn-primary" href="{{ route('home') }}">Menu</a>
         </li>
         <li>
-            <a href="{{ route('evaluations.index') }}">Minhas Avaliações</a>
+            <a class="btn btn-primary" href="{{ route('evaluations.list',$user->id) }}">Avaliações</a>
         </li>
     </ul>
     <h3>{{ $user->name }}</h3>

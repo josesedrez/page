@@ -75,6 +75,11 @@
             </div>
         </div>
 
+        <div class="row" id="app">
+            <commentary></commentary>
+        </div>
     </div>
 
+
+<script src="{{ asset('/js/app.js') }}"></script>
 @endsection

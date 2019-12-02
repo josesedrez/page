@@ -22,7 +22,7 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/games/list', 'GameController@list')->name('games.list');
 
-Route::get('/evaluations/list', 'EvaluationController@list')->name('evaluations.list');
+Route::get('/evaluations/list/{user?}', 'EvaluationController@list')->name('evaluations.list');
 
 Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
 
