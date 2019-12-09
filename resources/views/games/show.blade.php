@@ -17,14 +17,13 @@
         <ul>
             @if (Auth::user())
                 @if (!Auth::user()->is_admin)
-                    <li><a class="btn btn-primary" role="button" href="{{ route('evaluations.create', $game->id) }}">Avaliar</a></li>
+        <li><a class="btn btn-primary {{ count(Auth::user()->evaluations->where('game_id', $game->id)) ? 'disabled' : '' }}" role="button" href="{{ route('evaluations.create', $game->id) }}">Avaliar</a></li>
                 @endif
                 @if (Auth::user()->is_admin)
                     <li><a class="btn btn-primary" role="button" href="{{ route('games.edit',$game->id) }}">Editar</a></li>
                     <li><a class="btn btn-primary" role="button" href="{{ route('games.editCategories',$game->id) }}">Categorias</a></li>
                 @endif
             @endif
-            <li><a class="btn btn-primary" role="button" href="{{ route('games.list') }}">Voltar</a></li>
         </ul>
     </div>
 

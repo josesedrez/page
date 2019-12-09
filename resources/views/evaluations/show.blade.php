@@ -32,7 +32,6 @@
                 </li>
             @endif
         @endif
-        <li><a class="btn btn-primary" role="button" href="{{ route('games.show', $evaluation->game->id) }}">Voltar</a></li>
     </ul>
     <div>
 
@@ -76,7 +75,7 @@
         </div>
 
         <div class="row" id="app">
-            <commentary></commentary>
+            {{-- <commentary style="width:100%;"></commentary> --}}
         </div>
     </div>
 

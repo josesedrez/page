@@ -8,14 +8,14 @@
 export default {
     data() {
         return{
-            test: 'TESTEEEEEE'
+            test: 'TES2E'
         }
     }
 }
 </script>
 
 <style scoped>
-    .comment-body{
-        border: 1px solid red;
+    .comment-body {
+        border: 5px solid gray;
     }
 </style>
