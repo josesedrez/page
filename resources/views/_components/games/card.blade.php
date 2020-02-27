@@ -3,28 +3,23 @@
         .card{
             width: 200px;
             margin: 4px;
-            height: 200px;
-            border-radius:10%;
         }
 
         .card > a {
             color: white;
+            font-weight: bold;
         }
 
         .card-header {
-            height: 50px;
+            height: 60px;
         }
     </style>
 @endpush
 
 <div class="card">
-    <a href="{{ route('games.show',$item->id) }}">
+    <a class="text-center" href="{{ route('games.show',$item->id) }}">
         <div class="card-header">{{ $item->title }}</div>
 
-
-<img src="{{ asset('images/covers/'.$item->cover) }}" width="100%" height="150px">
-</a>
-    <div class="card-body">
-
-    </div>
+        <img src="{{ asset('images/covers/'.$item->cover) }}" width="100%" height="300px">
+    </a>
 </div>

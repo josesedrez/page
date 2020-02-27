@@ -12,7 +12,7 @@
 
             <!-- Content -->
             <h5 class="text-uppercase">Footer Content</h5>
-            <p>Here you can use rows and columns to organize your footer content.</p>
+            <p>PAGe é uma plataforma para avaliação de games eletrônicos onde os usuários podem expor suas opiniões com relação aos jogos.</p>
 
         </div>
         <!-- Grid column -->

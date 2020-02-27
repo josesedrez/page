@@ -32,6 +32,6 @@
     </div>
 
     <div class="col-md-2">
-        <a href="">Usuários</a>
+        <a href="{{ route('users.list') }}">Usuários</a>
     </div>
 </div>

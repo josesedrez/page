@@ -22,19 +22,16 @@
 @endpush
 
 <div class="card">
-    <a href="{{ route('evaluations.show',$item->id) }}">
-        <div class="card-header">{{ $item->title }}</div>
+    <a href="{{ route('users.show',$item->id) }}">
+        <div class="card-header">{{ $item->name }}</div>
     </a>
 
 
     <div class="card-body height-evaluation">
-        <span><b>Autor: </b></span>
-        <span>{{ $item->user->name }}</span>
+        <span><b>Email: </b></span>
+        <span>{{ $item->email }}</span>
         <br>
-        <span><b>Jogo: </b></span>
-        <span>{{ $item->game->title }}</span>
-        <br>
-        <span><b>Nota: </b></span>
-        <span>{{ $item->grade }}</span>
+        <span><b>Qtd. Avaliações: </b></span>
+        <span>{{ $item->evaluations->count() }}</span>
     </div>
 </div>

@@ -11,14 +11,13 @@
 |
 */
 
-use App\Evaluation;
-use App\Game;
-
 Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::get('/users/list', 'UserController@list')->name('users.list');
 
 Route::get('/games/list', 'GameController@list')->name('games.list');
 
@@ -27,6 +26,8 @@ Route::get('/evaluations/list/{user?}', 'EvaluationController@list')->name('eval
 Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
 
 Route::resource('/categories', 'CategoryController');
+
+Route::resource('/users', 'UserController');
 
 Route::resource('/games', 'GameController');
 
