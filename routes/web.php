@@ -23,7 +23,7 @@ Route::get('/games/list', 'GameController@list')->name('games.list');
 
 Route::get('/evaluations/list/{user?}', 'EvaluationController@list')->name('evaluations.list');
 
-Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile');
+Route::get('/profile', 'UserController@profile')->middleware('auth')->name('users.profile');
 
 Route::resource('/categories', 'CategoryController');
 
@@ -40,5 +40,9 @@ Route::get('/evaluations/{evaluation}/edit/{game}', 'EvaluationController@edit')
 Route::get('/games/categories/{game}', 'GameController@editCategories')->middleware('auth')->name('games.editCategories');
 
 Route::put('/games/categories/{game}', 'GameController@updateCategories')->name('games.updateCategories');
+
+//Route::get('/profile/image/{user}', 'UserController@editProfileImage')->name('users.editProfileImage');
+//
+//Route::get('/profile/image/{user}', 'UserController@updateProfileImage')->name('users.updateProfileImage');
 
 

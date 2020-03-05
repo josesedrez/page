@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserValidation;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,6 +16,23 @@ class UserController extends Controller
         $allUsers = $users->chunk(5);
 
         return view('users.list', compact('allUsers'));
+    }
+
+    public function updateProfileImage(UserValidation $request, User $user)
+    {
+        $profileName = $this->uploadFileAndGetName($request->file('profile'), 'profiles');
+
+        $user->update([
+            'profile' => $profileName
+        ]);
+
+        return redirect(route('users.profile'));
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('users.profile', compact('user'));
     }
 
     /**
@@ -64,9 +83,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -76,9 +95,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        if (is_null($request->file('profile'))) {
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+
+            return redirect(route('users.profile'));
+        }
+
+        $profileName = $this->uploadFileAndGetName($request->file('profile'), 'profiles');
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'profile' => $profileName
+        ]);
+
+        return redirect(route('users.profile'));
     }
 
     /**

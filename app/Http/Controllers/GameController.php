@@ -54,7 +54,7 @@ class GameController extends Controller
      */
     public function store(GameValidation $request)
     {
-        $coverName = $this->uploadFileAndGetName($request->file('cover'));
+        $coverName = $this->uploadFileAndGetName($request->file('cover'), 'covers');
 
         Game::create([
             'title' => $request->title,
@@ -114,10 +114,13 @@ class GameController extends Controller
      */
     public function update(GameValidation $request, Game $game)
     {
+        $coverName = $this->uploadFileAndGetName($request->file('cover'), 'covers');
 
         $game->update([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'cover' => $coverName,
+            'parental_rating' => $request->parentalRating
         ]);
 
         return redirect(route('games.index'));

@@ -94,7 +94,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('profile') }}">Perfil</a>
+                                    <a class="dropdown-item" href="{{ route('users.profile') }}">Perfil</a>
                                     @if (Auth::user()->is_admin)
                                         <a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
                                     @endif

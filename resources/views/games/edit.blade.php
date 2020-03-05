@@ -3,7 +3,7 @@
 @section('card-title','Jogos')
 
 @section('card-content')
-    <form method="POST" action="{{ route('games.update', $game->id) }}">
+    <form enctype="multipart/form-data" method="POST" action="{{ route('games.update', $game->id) }}">
         @method('PUT')
         @csrf
 
@@ -63,7 +63,7 @@
                     <button type="submit" class="btn btn-primary">
                         {{ __('Editar categoria') }}
                     </button>
-                    
+
                     <a href="{{ url()->previous() }}">Voltar</a>
                 </div>
             </div>

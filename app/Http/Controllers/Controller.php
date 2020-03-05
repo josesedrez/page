@@ -11,10 +11,10 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function uploadFileAndGetName($image)
+    public function uploadFileAndGetName($image, $fileName)
     {
         $name = time().'.'.$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/covers');
+        $destinationPath = public_path('/images/' . $fileName);
         $image->move($destinationPath, $name);
 
         return $name;

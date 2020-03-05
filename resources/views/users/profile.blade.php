@@ -43,7 +43,7 @@
 @section('card-content')
     <div class="profile profile-body">
         <div class="profile profile-logo">
-            <img src="{{ asset('images/profiles/default-profile.png') }}" width="100%" height="100%">
+            <img src="{{ asset('images/profiles/' . $user->profile) }}" width="100%" height="100%">
         </div>
         <div class="profile profile-top">
             <div class="profile profile-name">
@@ -56,6 +56,7 @@
         </div>
 
         <div class="profile profile-button">
+            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Editar Perfil</a>
             <a class="btn btn-primary" href="{{ route('evaluations.list',$user->id) }}">Avaliações</a>
         </div>
     </div>
