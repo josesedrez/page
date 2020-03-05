@@ -15,7 +15,7 @@
 
     <div class="row user-info">
         <div class="col-md-4">
-            <img src="{{ asset('images/profiles/default-profile.png') }}" width="100%">
+            <img src="{{ asset('images/profiles/' . $user->profile) }}" width="100%">
         </div>
         <div class="col-md-8">
             <h3>{{ $user->name }}</h3>
