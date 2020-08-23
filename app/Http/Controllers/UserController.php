@@ -6,6 +6,7 @@ use App\Http\Requests\UserValidation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -115,6 +116,24 @@ class UserController extends Controller
         ]);
 
         return redirect(route('users.profile'));
+    }
+
+    public function changePassword(User $user)
+    {
+        return view('users.password', compact('user'));
+    }
+
+    public function updatePassword(UserValidation $request, User $user)
+    {
+        if (Hash::check($request->password, $user->password)) {
+            $user->update([
+                'password' => Hash::make($request->newPassword)
+            ]);
+
+            return redirect(route('users.profile'));
+        }
+
+        return redirect()->back()->withErrors(['wrongPassword' => 'A senha informada está errada']);
     }
 
     /**

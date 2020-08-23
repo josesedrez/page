@@ -57,7 +57,10 @@
 
         <div class="profile profile-button">
             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Editar Perfil</a>
-            <a class="btn btn-primary" href="{{ route('evaluations.list',$user->id) }}">Avaliações</a>
+            <a class="btn btn-primary" href="{{ route('users.password',$user->id) }}">Mudar Senha</a>
+            @if(!Auth::user()->is_admin)
+                <a class="btn btn-primary" href="{{ route('evaluations.list',$user->id) }}">Avaliações</a>
+            @endif
         </div>
     </div>
 

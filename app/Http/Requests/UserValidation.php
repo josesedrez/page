@@ -24,7 +24,10 @@ class UserValidation extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:3'
+            'name' => 'min:3',
+            'email' => 'email',
+            'password' => 'min:8',
+            'newPassword' => 'min:8'
         ];
     }
 
@@ -32,7 +35,8 @@ class UserValidation extends FormRequest
     {
         return [
             'required' => 'Este campo é obrigatório',
-            'min' => 'Este campo deve conter pelo menos 3 caracteres',
+            'min:3' => 'Este campo deve conter pelo menos 3 caracteres',
+            'min:8' => 'Este campo deve conter pelo menos 8 caracteres',
             'image' => 'Deve ser uma imagem'
         ];
     }

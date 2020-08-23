@@ -75,7 +75,7 @@
         </div>
 
         <div class="row" id="app">
-            {{-- <commentary style="width:100%;"></commentary> --}}
+             <commentary style="width:100%;"></commentary>
         </div>
     </div>
 

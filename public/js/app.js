@@ -49315,7 +49315,7 @@ exports = module.exports = __webpack_require__(46)(false);
 
 
 // module
-exports.push([module.i, "\n.comment-body[data-v-aadf7160] {\n    border: 5px solid gray;\n}\n", ""]);
+exports.push([module.i, "\n.comment-content[data-v-aadf7160] {\n    border: 1px solid gray;\n    -ms-flex-line-pack: center;\n        align-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.comment-body[data-v-aadf7160] {\n    border: 1px solid gray;\n}\n", ""]);
 
 // exports
 
@@ -49665,24 +49665,9 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 /* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            test: 'TES2E'
-        };
-    }
-});
+throw new Error("Module build failed: SyntaxError: Unexpected token (19:16)\n\n\u001b[0m \u001b[90m 17 | \u001b[39m            test\u001b[33m:\u001b[39m \u001b[32m'Comentários'\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 18 | \u001b[39m            commentaries\u001b[33m:\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 | \u001b[39m                {\n \u001b[90m    | \u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 | \u001b[39m                    author\u001b[33m:\u001b[39m \u001b[32m'fulano'\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 21 | \u001b[39m                    description\u001b[33m:\u001b[39m \u001b[32m'uhaussahusahsuahauhsa'\u001b[39m\n \u001b[90m 22 | \u001b[39m                }\u001b[0m\n");
 
 /***/ }),
 /* 50 */
@@ -49692,11 +49677,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "comment-body" }, [
-    _vm._v("\n    " + _vm._s(_vm.test) + "\n")
+  return _c("div", { staticClass: "comment-content text-center" }, [
+    _c("div", [_c("h4", [_vm._v(_vm._s(_vm.test))])]),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "comment-body" }, [
+      _c("div", { staticClass: "commentary" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

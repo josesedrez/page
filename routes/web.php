@@ -33,16 +33,14 @@ Route::resource('/games', 'GameController');
 
 Route::resource('/evaluations', 'EvaluationController');
 
-Route::get('/evaluations/create/{game}', 'EvaluationController@create')->name('evaluations.create');
+Route::get('/evaluations/create/{game}', 'EvaluationController@create')->middleware('auth')->name('evaluations.create');
 
-Route::get('/evaluations/{evaluation}/edit/{game}', 'EvaluationController@edit')->name('evaluations.edit');
+Route::get('/evaluations/{evaluation}/edit/{game}', 'EvaluationController@edit')->middleware('auth')->name('evaluations.edit');
 
 Route::get('/games/categories/{game}', 'GameController@editCategories')->middleware('auth')->name('games.editCategories');
 
-Route::put('/games/categories/{game}', 'GameController@updateCategories')->name('games.updateCategories');
+Route::put('/games/categories/{game}', 'GameController@updateCategories')->middleware('auth')->name('games.updateCategories');
 
-//Route::get('/profile/image/{user}', 'UserController@editProfileImage')->name('users.editProfileImage');
-//
-//Route::get('/profile/image/{user}', 'UserController@updateProfileImage')->name('users.updateProfileImage');
+Route::get('/users/password/{user}', 'UserController@changePassword')->middleware('auth')->name('users.password');
 
-
+Route::put('/users/password/{user}', 'UserController@updatePassword')->middleware('auth')->name('users.updatePassword');

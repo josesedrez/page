@@ -54,12 +54,22 @@ class GameController extends Controller
      */
     public function store(GameValidation $request)
     {
-        $coverName = $this->uploadFileAndGetName($request->file('cover'), 'covers');
+        if ($request->file('cover')) {
+            $coverName = $this->uploadFileAndGetName($request->file('cover'), 'covers');
+
+            Game::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'cover' => $coverName,
+                'parental_rating' => $request->parentalRating
+            ]);
+
+            return redirect(route('games.index'));
+        }
 
         Game::create([
             'title' => $request->title,
             'description' => $request->description,
-            'cover' => $coverName,
             'parental_rating' => $request->parentalRating
         ]);
 
